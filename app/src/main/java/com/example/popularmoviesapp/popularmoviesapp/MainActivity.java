@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import java.net.URL;
 
 
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements PosterAdopter.Mov
     private final static String MENU_SELECTED = "selected";
     private int selected = -1;
     MenuItem menuItem;
-
     private String queryMovie = "popular";
     private String appTitle = "Popular Movies";
     private Movies[] mMovie = null;
@@ -47,13 +45,13 @@ public class MainActivity extends AppCompatActivity implements PosterAdopter.Mov
         mRecyclerView = findViewById(R.id.rv_show_movies_list);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mRecyclerView.setHasFixedSize(true);
-
+//grid layout for recyclar view of span 2 for potrate and of span 4 for landscape mode
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         } else {
             mRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         }
-
+//changing the app title based on the sort order
         setTitle(appTitle);
 
         if (!isOnline()) {
@@ -78,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements PosterAdopter.Mov
 
     }
 
+    //device is connected to network or not
     private boolean isOnline() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         assert connMgr != null;
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements PosterAdopter.Mov
             networkError();
             return;
         }
-
+//passing the information to MovieDetail
         Intent intent = new Intent(this, MovieDetail.class);
         intent.putExtra("MovieTitle", mMovie[position].getMovieTitle());
         intent.putExtra("MoviePlot", mMovie[position].getMoviePLot());
@@ -145,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements PosterAdopter.Mov
             URL theMovieUrl = NetworkUtils.buildUrl(strings[0]);
 
             try {
-
+//making a network call in background thread
                 movieQueryResponse = NetworkUtils.getResponseFromHttp(theMovieUrl);
                 mMovie = JsonUtils.parseMovieJson(movieQueryResponse);
 
@@ -165,7 +164,6 @@ public class MainActivity extends AppCompatActivity implements PosterAdopter.Mov
                 mMovie = movies;
                 PosterAdopter adapter = new PosterAdopter(movies, MainActivity.this, MainActivity.this);
                 mRecyclerView.setAdapter(adapter);
-
                 mRecyclerView.setVisibility(View.VISIBLE);
                 hideViews();
 

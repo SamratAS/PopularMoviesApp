@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">PopularMoviesApp</string>
+    // will be used to implemet navigation drawer in next phase
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="poster">Poster</string>
@@ -7,11 +8,11 @@
     <string name="error_message">An error occurred</string>
     <string name="missing_api_key">missing api key</string>
     <string name="no_data">data not available</string>
-    <string name="btn_retry_text">RETRY</string>
     <string name="release_date_label">Release Date</string>
     <string name="user_rating_label">User Rating</string>
-    <string name="sort_popularity_label">Sort by Popularity</string>
-    <string name="sort_top_rated_label">Sort by Top Rated</string>
+    <string name="sort_popularity_label">Most Popularity</string>
+    <string name="sort_top_rated_label">Top Rated</string>
     <string name="movie_image">Movie Image</string>
     <string name="story">Story</string>
+    <string name="movie_title">Movie Title</string>
 </resources>

@@ -15,7 +15,7 @@ public class JsonUtils {
     private static final String MOVIE_RELEASE_DATE = "release_date";
 
     private static final String MOVIE_RESULTS = "results";
-
+//parsing the json responce
     public static Movies[] parseMovieJson(String jsonMovieDetails) throws JSONException{
         JSONObject jsonObject = new JSONObject(jsonMovieDetails);
         JSONArray jsonArrayResult = jsonObject.getJSONArray(MOVIE_RESULTS);
@@ -29,7 +29,6 @@ public class JsonUtils {
             movie.setReleaseDate(jsonArrayResult.getJSONObject(i).optString(MOVIE_RELEASE_DATE));
             result[i] = movie;
         }
-
         return result;
 
     }
